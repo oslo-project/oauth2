@@ -22,6 +22,7 @@
 			"title": "Links",
 			"pages": [
 				["GitHub", "https://github.com/oslo-project/oauth2"],
+				["Oslo", "https://oslojs.dev"],
 				["Twitter", "https://twitter.com/pilcrowonpaper"],
 				["Donate", "https://github.com/sponsors/pilcrowOnPaper"]
 			]
