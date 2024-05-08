@@ -1,62 +1,6 @@
-import { sha256 } from "@oslojs/crypto/sha2";
 import { base64url } from "@oslojs/encoding";
 import { OAuth2RequestContext } from "./request.js";
-import { sendTokenEndpointRequest } from "./token.js";
-
-import type { TokenResponseBody } from "./token.js";
-
-export class AuthorizationCodeClient {
-	public clientId: string;
-
-	public authorizationEndpoint: string;
-	public tokenEndpoint: string;
-
-	private redirectURI: string | null = null;
-
-	constructor(
-		clientId: string,
-		authorizationEndpoint: string,
-		tokenEndpoint: string,
-		options?: {
-			redirectURI?: string;
-		}
-	) {
-		this.clientId = clientId;
-		this.authorizationEndpoint = authorizationEndpoint;
-		this.tokenEndpoint = tokenEndpoint;
-		if (options !== undefined && options.redirectURI !== undefined) {
-			this.redirectURI = options.redirectURI;
-		}
-	}
-
-	public createAuthorizationURL(): AuthorizationCodeAuthorizationURL {
-		const url = new AuthorizationCodeAuthorizationURL(this.authorizationEndpoint, this.clientId);
-		if (this.redirectURI !== null) {
-			url.setRedirectURI(this.redirectURI);
-		}
-		return url;
-	}
-
-	public createTokenRequestContext(
-		authorizationCode: string
-	): AuthorizationCodeTokenRequestContext {
-		const request = new AuthorizationCodeTokenRequestContext(
-			this.clientId,
-			authorizationCode
-		);
-		if (this.redirectURI !== null) {
-			request.setRedirectURI(this.redirectURI);
-		}
-		return request;
-	}
-
-	public async sendTokenRequest<_TokenResponseBody extends TokenResponseBody>(
-		context: AuthorizationCodeTokenRequestContext
-	): Promise<_TokenResponseBody> {
-		const result = await sendTokenEndpointRequest<_TokenResponseBody>(this.tokenEndpoint, context);
-		return result;
-	}
-}
+import { sha256 } from "@oslojs/crypto/sha2";
 
 export class AuthorizationCodeAuthorizationURL extends URL {
 	constructor(authorizeEndpoint: string, clientId: string) {
@@ -104,9 +48,9 @@ export class AuthorizationCodeAuthorizationURL extends URL {
 	}
 }
 
-export class AuthorizationCodeTokenRequestContext extends OAuth2RequestContext {
-	constructor(clientId: string, authorizationCode: string) {
-		super(clientId);
+export class AuthorizationCodeAccessTokenRequestContext extends OAuth2RequestContext {
+	constructor(authorizationCode: string) {
+		super();
 		this.body.set("grant_type", "authorization_code");
 		this.body.set("code", authorizationCode);
 	}

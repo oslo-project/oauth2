@@ -1,4 +1,8 @@
-# @oslojs/oauth2
+---
+title: "@oslojs/oauth2 documentation"
+---
+
+# @oslojs/oauth2 documentation
 
 A JavaScript client library for OAuth 2.0.
 

@@ -1,23 +1,24 @@
 export {
-	AuthorizationCodeClient,
-	AuthorizationCodeTokenRequestContext,
+	AuthorizationCodeAccessTokenRequestContext,
 	AuthorizationCodeAuthorizationURL,
 	generateCodeVerifier,
 	generateState
 } from "./authorization-code.js";
 
 export {
-	DeviceCodeTokenRequest,
-	DeviceCodeAuthorizationRequestContext,
-	DeviceCodeClient
-} from "./device-code.js";
+	DeviceAccessTokenRequest,
+	DeviceAuthorizationRequestContext,
+	sendDeviceAuthorizationRequest
+} from "./device-authorization.js";
 
-export type { DeviceCodeAuthorizationResponseBody } from "./device-code.js";
+export type { DeviceAuthorizationResponseBody } from "./device-authorization.js";
 
-export { TokenRevocationClient, TokenRevocationRequestContext } from "./token-revocation.js";
+export { sendTokenRevocationRequest, TokenRevocationRequestContext } from "./token-revocation.js";
 
-export { RefreshTokenClient, RefreshTokenRequestContext } from "./refresh-token.js";
+export { RefreshRequestContext } from "./refresh-token.js";
 
-export { OAuth2Request, OAuth2RequestContext, OAuth2RequestError } from "./request.js";
+export { OAuth2RequestContext, OAuth2RequestError } from "./request.js";
+
+export { sendTokenRequest } from "./token.js";
 
 export type { TokenResponseBody } from "./token.js";

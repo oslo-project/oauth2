@@ -20,6 +20,10 @@
 		"oauth2",
 		"oauth"
 	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/oslo-project/oauth2"
+	},
 	"author": "pilcrowOnPaper",
 	"license": "MIT",
 	"devDependencies": {

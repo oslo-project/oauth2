@@ -4,23 +4,24 @@ export class OAuth2RequestContext {
 	public body = new URLSearchParams();
 	public headers = new Headers();
 
-	public clientId: string;
-
-	constructor(clientId: string) {
-		this.clientId = clientId;
-		this.body.set("client_id", clientId);
+	constructor() {
 		this.headers.set("Content-Type", "application/x-www-form-urlencoded");
 		this.headers.set("Accept", "application/json");
 		this.headers.set("User-Agent", "oslo");
 	}
 
-	public authenticateWithRequestBody(clientSecret: string): void {
+	public setClientId(clientId: string): void {
+		this.body.set("client_id", clientId);
+	}
+
+	public authenticateWithRequestBody(clientId: string, clientSecret: string): void {
+		this.setClientId(clientId);
 		this.body.set("client_secret", clientSecret);
 	}
 
-	public authenticateWithHTTPBasicAuth(clientPassword: string): void {
+	public authenticateWithHTTPBasicAuth(clientId: string, clientSecret: string): void {
 		const authorizationHeader = base64.encode(
-			new TextEncoder().encode(`${this.clientId}:${clientPassword}`)
+			new TextEncoder().encode(`${clientId}:${clientSecret}`)
 		);
 		this.headers.set("Authorization", authorizationHeader);
 	}
@@ -34,35 +35,24 @@ export class OAuth2RequestContext {
 	}
 }
 
-export class OAuth2Request {
-	public method: string;
-	public url: string;
-	public headers: Headers;
-	public body: URLSearchParams;
-
-	constructor(method: string, url: string, headers: Headers, body: URLSearchParams) {
-		this.method = method;
-		this.url = url;
-		this.headers = headers;
-		this.body = body;
-	}
-}
-
 export class OAuth2RequestError extends Error {
-	public request: OAuth2Request;
+	public request: Request;
+	public context: OAuth2RequestContext;
 	public description: string | null;
 	public responseHeaders: Headers;
 
 	constructor(
-		request: OAuth2Request,
+		message: string,
+		request: Request,
+		context: OAuth2RequestContext,
 		responseHeaders: Headers,
 		options?: {
-			message?: string;
 			description?: string;
 		}
 	) {
-		super(options?.message ?? "Unknown error");
+		super(message);
 		this.request = request;
+		this.context = context;
 		this.responseHeaders = responseHeaders;
 		this.description = options?.description ?? null;
 	}

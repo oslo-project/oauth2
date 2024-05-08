@@ -1,0 +1,30 @@
+{
+	"name": "@oslojs/oauth2",
+	"description": "A simple client library for OAuth 2.0.",
+	"domain": "https://oauth2.oslojs.dev",
+	"twitter": "@pilcrowonpaper",
+	"sidebar": [
+		{
+			"title": "Examples",
+			"pages": [
+				["Authorization code grant type", "/examples/authorization-code"],
+				["PKCE extension", "/examples/pkce"],
+				["Refresh tokens", "/examples/refresh-token"],
+				["Token revocation", "/examples/token-revocation"],
+				["Device authorization grant type", "/examples/device-authorization"]
+			]
+		},
+		{
+			"title": "API reference",
+			"pages": [["@oslojs/oauth2", "/reference/main"]]
+		},
+		{
+			"title": "Links",
+			"pages": [
+				["GitHub", "https://github.com/oslo-project/oauth2"],
+				["Twitter", "https://twitter.com/pilcrowonpaper"],
+				["Donate", "https://github.com/sponsors/pilcrowOnPaper"]
+			]
+		}
+	]
+}

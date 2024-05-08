@@ -1,66 +1,30 @@
-import { OAuth2Request, OAuth2RequestContext, OAuth2RequestError } from "./request.js";
+import { OAuth2RequestContext, OAuth2RequestError } from "./request.js";
 
 import type { TokenErrorResponseBody } from "./token.js";
 
-export class TokenRevocationClient {
-	public clientId: string;
-	public tokenRevocationEndpoint: string;
-
-	constructor(clientId: string, tokenRevocationEndpoint: string) {
-		this.clientId = clientId;
-		this.tokenRevocationEndpoint = tokenRevocationEndpoint;
+export async function sendTokenRevocationRequest(
+	tokenRevocationEndpoint: string,
+	context: TokenRevocationRequestContext,
+	options?: {
+		signal?: AbortSignal;
 	}
-
-	public createAccessTokenRevocationRequestContext(
-		accessToken: string
-	): TokenRevocationRequestContext {
-		const request = new TokenRevocationRequestContext(this.clientId, accessToken);
-		request.setTokenTypeHint("access_token");
-		return request;
+): Promise<void> {
+	const request = context.toFetchRequest("POST", tokenRevocationEndpoint);
+	const response = await fetch(request, {
+		signal: options?.signal
+	});
+	if (response.status === 200) {
+		return;
 	}
-
-	public createRefreshTokenRevocationRequestContext(
-		refreshToken: string
-	): TokenRevocationRequestContext {
-		const request = new TokenRevocationRequestContext(this.clientId, refreshToken);
-		request.setTokenTypeHint("refresh_token");
-		return request;
-	}
-
-	public async sendTokenRevocationRequest(
-		context: TokenRevocationRequestContext,
-		options?: {
-			timeoutInSeconds?: number;
-		}
-	): Promise<void> {
-		let response: Response;
-		if (options?.timeoutInSeconds !== undefined) {
-			response = await fetch(context.toFetchRequest("POST", this.tokenRevocationEndpoint), {
-				signal: AbortSignal.timeout(options.timeoutInSeconds * 1000)
-			});
-		} else {
-			response = await fetch(context.toFetchRequest("POST", this.tokenRevocationEndpoint));
-		}
-		if (response.status === 200) {
-			return;
-		}
-		const result: TokenErrorResponseBody = await response.json();
-		const request = new OAuth2Request(
-			"POST",
-			this.tokenRevocationEndpoint,
-			context.headers,
-			context.body
-		);
-		throw new OAuth2RequestError(request, response.headers, {
-			message: result.error,
-			description: result.error_description
-		});
-	}
+	const result: TokenErrorResponseBody = await response.json();
+	throw new OAuth2RequestError(result.error, request, context, response.headers, {
+		description: result.error_description
+	});
 }
 
 export class TokenRevocationRequestContext extends OAuth2RequestContext {
-	constructor(clientId: string, token: string) {
-		super(clientId);
+	constructor(token: string) {
+		super();
 		this.body.set("token", token);
 	}
 

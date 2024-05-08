@@ -1,4 +1,4 @@
-import { OAuth2Request, OAuth2RequestError } from "./request.js";
+import { OAuth2RequestError } from "./request.js";
 
 import type { OAuth2RequestContext } from "./request.js";
 
@@ -15,18 +15,22 @@ export interface TokenErrorResponseBody {
 	error_description?: string;
 }
 
-export async function sendTokenEndpointRequest<_TokenResponseBody extends TokenResponseBody>(
+export async function sendTokenRequest<_TokenResponseBody extends TokenResponseBody>(
 	tokenEndpoint: string,
-	context: OAuth2RequestContext
+	context: OAuth2RequestContext,
+	options?: {
+		signal?: AbortSignal;
+	}
 ): Promise<_TokenResponseBody> {
-	const response = await fetch(context.toFetchRequest("POST", tokenEndpoint));
+	const request = context.toFetchRequest("POST", tokenEndpoint);
+	const response = await fetch(request, {
+		signal: options?.signal
+	});
 	const result: _TokenResponseBody | TokenErrorResponseBody = await response.json();
 	if ("access_token" in result) {
 		return result as _TokenResponseBody;
 	}
-	const request = new OAuth2Request("POST", tokenEndpoint, context.headers, context.body);
-	throw new OAuth2RequestError(request, response.headers, {
-		message: result.error,
+	throw new OAuth2RequestError(result.error, request, context, response.headers, {
 		description: result.error_description
 	});
 }
