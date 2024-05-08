@@ -9,8 +9,7 @@
 	"scripts": {
 		"build": "rm -rf dist/* && tsc --project tsconfig.build.json",
 		"format": "prettier -w .",
-		"lint": "eslint src",
-		"test": "vitest run --sequence.concurrent"
+		"lint": "eslint src"
 	},
 	"files": [
 		"/dist/"
@@ -33,8 +32,7 @@
 		"auri": "^2.0.0",
 		"eslint": "^8.51.0",
 		"prettier": "^3.0.3",
-		"typescript": "^5.2.2",
-		"vitest": "^0.34.6"
+		"typescript": "^5.2.2"
 	},
 	"dependencies": {
 		"@oslojs/crypto": "^0.1.0",

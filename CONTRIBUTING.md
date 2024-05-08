@@ -2,7 +2,9 @@
 
 ## Contributing to the docs
 
-We welcome all contributions to the docs, especially grammar fixes. Oslo uses [Malta](https://malta-cli.pages.dev) for generating documentation sites. All pages are markdown files located in the `docs/pages` directory. Make sure to update `malta.config.json` if you need a page to appear in the sidebar.
+We welcome all contributions to the docs. Oslo uses [Malta](https://malta-cli.pages.dev) for generating documentation sites. All pages are markdown files located in the `docs/pages` directory. Make sure to update `malta.config.json` if you need a page to appear in the sidebar.
+
+For large scale changes, please open a new issue before creating a pull request.
 
 ## Contributing to the source code
 
@@ -18,11 +20,9 @@ pnpm i
 
 ### Testing
 
-Run `pnpm test` to run tests and `pnpm build` to build the package.
+Run `pnpm build` to build the package.
 
 ```
-pnpm test
-
 pnpm build
 ```
 
