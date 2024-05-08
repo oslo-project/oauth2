@@ -13,6 +13,7 @@ import { AuthorizationCodeAccessTokenRequestContext, sendTokenRequest } from "@o
 
 const context = new AuthorizationCodeAccessTokenRequestContext(code);
 context.authenticateWithHTTPBasicAuth(clientId, clientSecret);
+context.setRedirectURI("https://my-app.com/login/callback");
 const tokens = await sendTokenRequest(tokenEndpoint, context);
 const accessToken = tokens.accessToken;
 ```
