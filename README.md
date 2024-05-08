@@ -2,7 +2,7 @@
 
 A JavaScript client library for OAuth 2.0.
 
-It supports authorization code grant type, PKCE extension, refresh token grant type, token revocation, and device code grant type requests based on [RFC 6749](https://datatracker.ietf.org/doc/html/rfc6749), [RFC 7009](https://datatracker.ietf.org/doc/html/rfc7009), [RFC 7636](https://datatracker.ietf.org/doc/html/rfc7636), and [RFC 8628](https://datatracker.ietf.org/doc/html/rfc8628).
+Supports authorization code grant type, PKCE extension, refresh token grant type, token revocation, and device code grant type as specified in [RFC 6749](https://datatracker.ietf.org/doc/html/rfc6749), [RFC 7009](https://datatracker.ietf.org/doc/html/rfc7009), [RFC 7636](https://datatracker.ietf.org/doc/html/rfc7636), and [RFC 8628](https://datatracker.ietf.org/doc/html/rfc8628).
 
 - Runtime-agnostic
 - No third-party dependencies
@@ -28,7 +28,7 @@ npm i @oslojs/oauth2
 
 ## Prerequisites
 
-This package requires the [Web Crypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API) and `AbortSignal.timeout()`. The Web Crypto API is available in most modern runtimes, including Node.js 20+, Deno, Bun, and Cloudflare Workers. The big exception is Node.js 16 and 18. Make sure to polyfill it using `webcrypto`.
+This package requires the [Web Crypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API). This is available in most modern runtimes, including Node.js 20+, Deno, Bun, and Cloudflare Workers. The major exception is Node.js 16 and 18. Make sure to polyfill it using `webcrypto`.
 
 ```ts
 import { webcrypto } from "node:crypto";
