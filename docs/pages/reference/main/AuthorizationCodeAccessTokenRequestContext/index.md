@@ -1,8 +1,8 @@
 ---
-title: "AuthorizationAccessTokenRequestContext"
+title: "AuthorizationCodeAccessTokenRequestContext"
 ---
 
-# AuthorizationAccessTokenRequestContext
+# AuthorizationCodeAccessTokenRequestContext
 
 Extends [`OAuth2RequestContext`](/reference/main/OAuth2RequestContext).
 
@@ -32,8 +32,8 @@ function constructor(authorizationEndpoint: string): this;
 - [`OAuth2RequestContext.authenticateWithRequestBody()`](/reference/main/OAuth2RequestContext/authenticateWithRequestBody)
 - [`OAuth2RequestContext.setClientId()`](/reference/main/OAuth2RequestContext/setClientId)
 - [`OAuth2RequestContext.toFetchRequest()`](/reference/main/OAuth2RequestContext/toFetchRequest)
-- [`setCodeVerifier()`](/reference/main/AuthorizationAccessTokenRequestContext/setCodeVerifier)
-- [`setRedirectURI()`](/reference/main/AuthorizationAccessTokenRequestContext/setRedirectURI)
+- [`setCodeVerifier()`](/reference/main/AuthorizationCodeAccessTokenRequestContext/setCodeVerifier)
+- [`setRedirectURI()`](/reference/main/AuthorizationCodeAccessTokenRequestContext/setRedirectURI)
 
 ## Properties
 

@@ -1,8 +1,8 @@
 ---
-title: "AuthorizationAccessTokenRequestContext.setRedirectURI()"
+title: "AuthorizationCodeAccessTokenRequestContext.setRedirectURI()"
 ---
 
-# AuthorizationAccessTokenRequestContext.setRedirectURI()
+# AuthorizationCodeAccessTokenRequestContext.setRedirectURI()
 
 Sets the `redirect_uri` parameter.
 
