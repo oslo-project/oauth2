@@ -4,7 +4,7 @@ title: "@oslojs/oauth2 documentation"
 
 # @oslojs/oauth2 documentation
 
-A JavaScript client library for OAuth 2.0.
+A JavaScript client library for OAuth 2.0 by [Oslo](https://oslojs.dev).
 
 Supports authorization code grant type, PKCE extension, refresh token grant type, token revocation, and device code grant type as specified in [RFC 6749](https://datatracker.ietf.org/doc/html/rfc6749), [RFC 7009](https://datatracker.ietf.org/doc/html/rfc7009), [RFC 7636](https://datatracker.ietf.org/doc/html/rfc7636), and [RFC 8628](https://datatracker.ietf.org/doc/html/rfc8628).
 
