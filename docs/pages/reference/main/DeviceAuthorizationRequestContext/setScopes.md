@@ -4,7 +4,7 @@ title: "DeviceAuthorizationRequestContext.setScopes()"
 
 # DeviceAuthorizationRequestContext.setScopes()
 
-Sets the `scope` parameter. Use [`DeviceAuthorizationRequestContext.appendScopes()`]() to append to existing scopes.
+Sets the `scope` parameter. Use [`DeviceAuthorizationRequestContext.appendScopes()`](/reference/main/DeviceAuthorizationRequestContext/appendScopes) to append to existing scopes.
 
 ## Definition
 

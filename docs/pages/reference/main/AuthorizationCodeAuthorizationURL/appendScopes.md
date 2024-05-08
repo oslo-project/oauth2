@@ -4,7 +4,7 @@ title: "AuthorizationCodeAuthorizationURL.appendScopes()"
 
 # AuthorizationCodeAuthorizationURL.appendScopes()
 
-Adds scopes to the `scope` parameter by appending them to existing ones. Use [`AuthorizationCodeAuthorizationURL.setScopes()`]() to replace existing ones.
+Adds scopes to the `scope` parameter by appending them to existing ones. Use [`AuthorizationCodeAuthorizationURL.setScopes()`](/reference/main/AuthorizationCodeAuthorizationURL/setScopes) to replace existing ones.
 
 ## Definition
 

@@ -25,7 +25,7 @@ function sendTokenRequest<_ResponseBody extends $$TokenResponseBody>(
 ### Parameters
 
 - `tokenEndpoint`
-- `context`: [`AuthorizationCodeAccessTokenRequestContext`](), [`DeviceAccessTokenRequestContext`](), or [`RefreshRequestContext`]().
+- `context`: [`AuthorizationCodeAccessTokenRequestContext`](/reference/main/AuthorizationCodeAccessTokenRequestContext), [`DeviceAccessTokenRequestContext`](/reference/main/DeviceAccessTokenRequestContext), or [`RefreshRequestContext`](/reference/main/RefreshRequestContext).
 - `options`
   - `signal`: `AbortSignal` for `fetch()`
 

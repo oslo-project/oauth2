@@ -4,7 +4,7 @@ title: "RefreshRequestContext.setScopes()"
 
 # RefreshRequestContext.setScopes()
 
-Sets the `scope` parameter. Use [`RefreshRequestContext.appendScopes()`]() to append to existing scopes.
+Sets the `scope` parameter. Use [`RefreshRequestContext.appendScopes()`](/reference/main/RefreshRequestContext/appendScopes) to append to existing scopes.
 
 ## Definition
 
