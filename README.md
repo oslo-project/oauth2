@@ -15,7 +15,7 @@ const context = new AuthorizationCodeAccessTokenRequestContext(code);
 context.authenticateWithHTTPBasicAuth(clientId, clientSecret);
 context.setRedirectURI("https://my-app.com/login/callback");
 const tokens = await sendTokenRequest(tokenEndpoint, context);
-const accessToken = tokens.accessToken;
+const accessToken = tokens.access_token;
 ```
 
 > Implicit grant type and resource owner password credentials grant type are not supported as they are no longer recommended.
