@@ -12,7 +12,7 @@ See [RFC 6749 section 4.1.2.1](https://datatracker.ietf.org/doc/html/rfc6749#sec
 
 ```ts
 //$ TokenResponseBody=/reference/main/TokenResponseBody
-//$ DeviceAuthorizationRequestContext=/reference/main/OAuth2RequestContext
+//$ OAuth2RequestContext=/reference/main/OAuth2RequestContext
 function sendTokenRequest<_ResponseBody extends $$TokenResponseBody>(
 	tokenEndpoint: string,
 	context: $$OAuth2RequestContext,

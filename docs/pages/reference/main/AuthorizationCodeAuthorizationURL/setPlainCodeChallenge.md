@@ -19,7 +19,7 @@ function setPlainCodeChallenge(codeVerifier: string): void;
 ## Example
 
 ```ts
-import { $$generateCodeVerifier } from "oslo/oauth2";
+import { generateCodeVerifier } from "oslo/oauth2";
 
 const codeVerifier = generateCodeVerifier();
 url.setPlainCodeChallenge(codeVerifier);
