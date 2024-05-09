@@ -6,7 +6,7 @@ title: "RefreshRequestContext"
 
 Extends [`OAuth2RequestContext`](/reference/main/OAuth2RequestContext).
 
-Represents a refresh request as defined in [RFC 6749 section 6](https://datatracker.ietf.org/doc/html/rfc6749#section-6).
+Represents a refresh request as defined in [RFC 6749 §6](https://datatracker.ietf.org/doc/html/rfc6749#section-6).
 
 On initialization:
 

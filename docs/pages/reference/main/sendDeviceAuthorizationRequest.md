@@ -4,9 +4,9 @@ title: "sendDeviceAuthorizationRequest()"
 
 # sendDeviceAuthorizationRequest()
 
-Sends a device authorization request to the device authorization endpoint as defined in [RFC 8628 section 3.1](https://datatracker.ietf.org/doc/html/rfc8628#section-3.1). Returns the JSON-parsed response body on successful responses and throws a [`OAuth2RequestError`](/reference/main/OAuth2RequestError) on error responses. Can also throw one of the exceptions from the global `fetch()`.
+Sends a device authorization request to the device authorization endpoint as defined in [RFC 8628 §3.1](https://datatracker.ietf.org/doc/html/rfc8628#section-3.1). Returns the JSON-parsed response body on successful responses and throws a [`OAuth2RequestError`](/reference/main/OAuth2RequestError) on error responses. Can also throw one of the exceptions from the global `fetch()`.
 
-See [RFC 8628 section 3.1](https://datatracker.ietf.org/doc/html/rfc8628#section-3.1) for a full list of error messages.
+See [RFC 8628 §3.1](https://datatracker.ietf.org/doc/html/rfc8628#section-3.1) for a full list of error messages.
 
 ## Definition
 

@@ -6,7 +6,7 @@ title: "DeviceAccessTokenRequestContext"
 
 Extends [`OAuth2RequestContext`](/reference/main/OAuth2RequestContext).
 
-Represents a device access token request in the device authorization grant type as defined in [RFC 8628 section 3.4](https://datatracker.ietf.org/doc/html/rfc8628#section-3.4).
+Represents a device access token request in the device authorization grant type as defined in [RFC 8628 §3.4](https://datatracker.ietf.org/doc/html/rfc8628#section-3.4).
 
 On initialization:
 

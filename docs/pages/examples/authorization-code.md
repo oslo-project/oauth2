@@ -4,7 +4,7 @@ title: "Authorization code grant type"
 
 # Authorization code grant type
 
-This grant type is defined in [RFC 6749 section 1.3.1](https://datatracker.ietf.org/doc/html/rfc6749#section-1.3.1).
+This grant type is defined in [RFC 6749 §1.3.1](https://datatracker.ietf.org/doc/html/rfc6749#section-1.3.1).
 
 ## Create authorization URL
 

@@ -6,7 +6,7 @@ title: "TokenRevocationRequestContext"
 
 Extends [`OAuth2RequestContext`](/reference/main/OAuth2RequestContext).
 
-Represents a token revocation request as defined in [RFC 7009 section 2.1](https://datatracker.ietf.org/doc/html/rfc7009#section-2.1).
+Represents a token revocation request as defined in [RFC 7009 §2.1](https://datatracker.ietf.org/doc/html/rfc7009#section-2.1).
 
 ## Constructor
 

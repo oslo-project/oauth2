@@ -6,7 +6,7 @@ title: "OAuth2RequestError"
 
 Extends the standard `Error`.
 
-Represents an OAuth 2.0 request error as defined in [RFC 6749 section 5.2](https://datatracker.ietf.org/doc/html/rfc6749#section-5.2). See the RFC section for the endpoint and request type for a full list of error messages.
+Represents an OAuth 2.0 request error as defined in [RFC 6749 §5.2](https://datatracker.ietf.org/doc/html/rfc6749#section-5.2). See the RFC §for the endpoint and request type for a full list of error messages.
 
 ## Constructor
 

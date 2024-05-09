@@ -4,7 +4,7 @@ title: "DeviceAuthorizationResponseBody"
 
 # DeviceAuthorizationResponseBody
 
-Represents the JSON-parsed successful response body from the device authorization endpoint, as defined in [RFC 8628 section 3.2](https://datatracker.ietf.org/doc/html/rfc8628#section-3.2).
+Represents the JSON-parsed successful response body from the device authorization endpoint, as defined in [RFC 8628 §3.2](https://datatracker.ietf.org/doc/html/rfc8628#section-3.2).
 
 ## Definition
 

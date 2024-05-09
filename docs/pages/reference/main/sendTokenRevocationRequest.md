@@ -4,9 +4,9 @@ title: "sendTokenRevocationRequest()"
 
 # sendTokenRevocationRequest()
 
-Sends a token revocation request to the token revocation endpoint as defined in [RFC 7009 section 2](https://datatracker.ietf.org/doc/html/rfc7009#section-2). Throws a [`OAuth2RequestError`](/reference/main/OAuth2RequestError) on error responses. Can also throw one of the exceptions from the global `fetch()`.
+Sends a token revocation request to the token revocation endpoint as defined in [RFC 7009 §2](https://datatracker.ietf.org/doc/html/rfc7009#section-2). Throws a [`OAuth2RequestError`](/reference/main/OAuth2RequestError) on error responses. Can also throw one of the exceptions from the global `fetch()`.
 
-See [RFC 7009 section 2.2.1](https://datatracker.ietf.org/doc/html/rfc7009#section-2.2.1) for a full list of error messages.
+See [RFC 7009 §2.2.1](https://datatracker.ietf.org/doc/html/rfc7009#section-2.2.1) for a full list of error messages.
 
 ## Definition
 

@@ -4,9 +4,9 @@ title: "sendTokenRequest()"
 
 # sendTokenRequest()
 
-Sends a request to the token endpoint as defined in [RFC 6749 section 3.2](https://datatracker.ietf.org/doc/html/rfc6749#section-3.2). Returns the JSON-parsed response body on successful responses and throws a [`OAuth2RequestError`](/reference/main/OAuth2RequestError) on error responses. Can also throw one of the exceptions from the global `fetch()`.
+Sends a request to the token endpoint as defined in [RFC 6749 §3.2](https://datatracker.ietf.org/doc/html/rfc6749#section-3.2). Returns the JSON-parsed response body on successful responses and throws a [`OAuth2RequestError`](/reference/main/OAuth2RequestError) on error responses. Can also throw one of the exceptions from the global `fetch()`.
 
-See [RFC 6749 section 4.1.2.1](https://datatracker.ietf.org/doc/html/rfc6749#section-4.1.2.1) for a full list of error messages.
+See [RFC 6749 §4.1.2.1](https://datatracker.ietf.org/doc/html/rfc6749#section-4.1.2.1) for a full list of error messages.
 
 ## Definition
 

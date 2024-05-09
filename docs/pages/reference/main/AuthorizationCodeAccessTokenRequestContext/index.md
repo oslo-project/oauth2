@@ -6,7 +6,7 @@ title: "AuthorizationCodeAccessTokenRequestContext"
 
 Extends [`OAuth2RequestContext`](/reference/main/OAuth2RequestContext).
 
-Represents an authorization request in the authorization code grant type as defined in [RFC 6749 section 4.1.3](https://datatracker.ietf.org/doc/html/rfc6749#section-4.1.3), with support for PKCE as as defined in [RFC 7636](https://datatracker.ietf.org/doc/html/rfc7636).
+Represents an authorization request in the authorization code grant type as defined in [RFC 6749 §4.1.3](https://datatracker.ietf.org/doc/html/rfc6749#section-4.1.3), with support for PKCE as as defined in [RFC 7636](https://datatracker.ietf.org/doc/html/rfc7636).
 
 On initialization:
 
