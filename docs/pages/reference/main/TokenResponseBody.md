@@ -4,7 +4,7 @@ title: "TokenResponseBody"
 
 # TokenResponseBody
 
-Represents the JSON-parsed successful response body from the token endpoint, as defined in [RFC 6749 section 4.2.2](https://datatracker.ietf.org/doc/html/rfc6749#section-4.2.2). 
+Represents the JSON-parsed successful response body from the token endpoint, as defined in [RFC 6749 section 4.2.2](https://datatracker.ietf.org/doc/html/rfc6749#section-4.2.2).
 
 ## Definition
 

@@ -43,8 +43,8 @@ try {
 	const tokens = await sendDeviceAuthorizationRequest(endpoint, context);
 } catch (e) {
 	if (e instanceof OAuth2RequestError) {
-        // oauth 2 error
+		// oauth 2 error
 	}
-    // unknown error
+	// unknown error
 }
 ```

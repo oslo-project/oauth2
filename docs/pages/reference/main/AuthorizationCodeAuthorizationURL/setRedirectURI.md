@@ -4,7 +4,7 @@ title: "AuthorizationCodeAuthorizationURL.setRedirectURI()"
 
 # AuthorizationCodeAuthorizationURL.setRedirectURI()
 
-Sets the `redirect_uri` parameter. 
+Sets the `redirect_uri` parameter.
 
 ## Definition
 
