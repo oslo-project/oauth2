@@ -6,7 +6,7 @@ title: "Refresh tokens"
 
 This is defined in [RFC 6749 section 6](https://datatracker.ietf.org/doc/html/rfc6749#section-6).
 
-Create a new [`RefreshRequestContext`]() and send a refresh request to the token endpoint with [`sendTokenRequest()`](). This throws an [`OAuth2RequestError`]() when the endpoint returns a known OAuth 2.0 error response.
+Create a new [`RefreshRequestContext`](/reference/main/RefreshRequestContext) and send a refresh request to the token endpoint with [`sendTokenRequest()`](/reference/main/sendTokenRequest). This throws an [`OAuth2RequestError`](/reference/main/OAuth2RequestError) when the endpoint returns a known OAuth 2.0 error response.
 
 ```ts
 import { RefreshRequestContext, sendTokenRequest, OAuth2RequestError } from "@oslojs/oauth2";

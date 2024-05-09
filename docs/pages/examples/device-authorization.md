@@ -8,7 +8,7 @@ This grant type is defined in [RFC 8628](https://datatracker.ietf.org/doc/html/r
 
 ## Device authorization
 
-Create a new [`DeviceAuthorizationRequestContext`]() and send an access token request to the authorization endpoint with [`sendDeviceAuthorizationRequest()`](). This throws an [`OAuth2RequestError`]() when the endpoint returns a known OAuth 2.0 error response.
+Create a new [`DeviceAuthorizationRequestContext`](/reference/main/DeviceAuthorizationRequestContext) and send an access token request to the authorization endpoint with [`sendDeviceAuthorizationRequest()`](/reference/main/sendDeviceAuthorizationRequest). This throws an [`OAuth2RequestError`](/reference/main/OAuth2RequestError) when the endpoint returns a known OAuth 2.0 error response.
 
 ```ts
 import {
@@ -50,7 +50,7 @@ url.appendScopes("profile");
 
 ## Validate device code
 
-Create a new [`DeviceAccessTokenRequestContext`]() and send an access token request to the token endpoint with [`sendTokenRequest()`](). The request should be sent repeatedly on a set interval until the endpoint returns a successful response or the code expires. The function throws an [`OAuth2RequestError`]() when the endpoint returns a known OAuth 2.0 error response.
+Create a new [`DeviceAccessTokenRequestContext`](/reference/main/DeviceAccessTokenRequestContext) and send an access token request to the token endpoint with [`sendTokenRequest()`](/reference/main/sendTokenRequest). The request should be sent repeatedly on a set interval until the endpoint returns a successful response or the code expires. The function throws an [`OAuth2RequestError`](/reference/main/OAuth2RequestError) when the endpoint returns a known OAuth 2.0 error response.
 
 The authentication methods for `DeviceAccessTokenRequestContext` are the same as `DeviceAuthorizationRequestContext` mentioned above.
 

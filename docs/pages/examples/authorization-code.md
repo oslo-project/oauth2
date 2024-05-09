@@ -8,7 +8,7 @@ This grant type is defined in [RFC 6749 section 1.3.1](https://datatracker.ietf.
 
 ## Create authorization URL
 
-Use [`AuthorizationCodeAuthorizationURL`]() to represent a new authorization URL. You can use [`generateState()`]() to generate a new state (make sure the state is different on each request).
+Use [`AuthorizationCodeAuthorizationURL`](/reference/main/AuthorizationCodeAuthorizationURL) to represent a new authorization URL. You can use [`generateState()`](/reference/main/generateState) to generate a new state (make sure the state is different on each request).
 
 ```ts
 import { AuthorizationCodeAuthorizationURL, generateState } from "@oslojs/oauth2";
@@ -36,9 +36,9 @@ url.appendScopes("profile");
 
 ## Validation authorization code
 
-Create a new [`AuthorizationCodeAccessTokenRequestContext`]() and send an access token request with [`sendTokenRequest()`]().
+Create a new [`AuthorizationCodeAccessTokenRequestContext`](/reference/main/AuthorizationCodeAccessTokenRequestContext) and send an access token request with [`sendTokenRequest()`](/reference/main/sendTokenRequest).
 
-[`sendTokenRequest()`]() throws an [`OAuth2RequestError`]() when the endpoint returns a known OAuth 2.0 error response.
+This throws an [`OAuth2RequestError`](/reference/main/OAuth2RequestError) when the endpoint returns a known OAuth 2.0 error response.
 
 ```ts
 import {

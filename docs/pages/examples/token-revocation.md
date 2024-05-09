@@ -6,9 +6,7 @@ title: "Token revocation"
 
 This is defined is [RFC 7009](https://datatracker.ietf.org/doc/html/rfc7009).
 
-Create a new [`TokenRevocationRequestContext`]() and send a revocation request to the token endpoint with [`sendTokenRevocationRequest()`]().
-
-[`sendTokenRequest()`]() throws an [`OAuth2RequestError`]() when the endpoint returns a known OAuth 2.0 error response.
+Create a new [`TokenRevocationRequestContext`](/reference/main/TokenRevocationRequestContext) and send a revocation request to the token endpoint with [`sendTokenRevocationRequest()`](/reference/main/sendTokenRevocationRequest). This throws an [`OAuth2RequestError`](/reference/main/OAuth2RequestError) when the endpoint returns a known OAuth 2.0 error response.
 
 ```ts
 import {

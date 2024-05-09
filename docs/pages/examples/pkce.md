@@ -4,11 +4,11 @@ title: "PKCE"
 
 # PKCE
 
-This extension is defined in [RFC 7639](hhttps://datatracker.ietf.org/doc/html/rfc7636). See the [Authorization code grant type]() example page for the basic authorization code grant type.
+This extension is defined in [RFC 7639](hhttps://datatracker.ietf.org/doc/html/rfc7636). See the [Authorization code grant type](/examples/authorization-code) example page for the basic authorization code grant type.
 
 ## Authorization URL
 
-Use [`generateCodeVerifier()`]() to generate a new code verifier and set a code challenge with either [`setS256CodeChallenge()`]() or [`setPlainCodeChallenge()`](). Make sure the code verifier is different on each request.
+Use [`generateCodeVerifier()`](/reference/main/generateCodeVerifier) to generate a new code verifier and set a code challenge with either [`setS256CodeChallenge()`](/reference/main/setS256CodeChallenge) or [`setPlainCodeChallenge()`](/reference/main/setPlainCodeChallenge). Make sure the code verifier is different on each request.
 
 ```ts
 import { AuthorizationCodeAuthorizationURL, generateCodeVerifier } from "@oslojs/oauth2";
