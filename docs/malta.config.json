@@ -3,8 +3,7 @@
 	"description": "A simple client library for OAuth 2.0.",
 	"domain": "https://oauth2.oslojs.dev",
 	"twitter": "@pilcrowonpaper",
-	"logo": "logo-border.svg",
-	"og_logo": "logo-256.jpg",
+	"asset_hashing": true,
 	"sidebar": [
 		{
 			"title": "Examples",
