@@ -35,7 +35,7 @@
 		"typescript": "^5.2.2"
 	},
 	"dependencies": {
-		"@oslojs/crypto": "^0.1.0",
-		"@oslojs/encoding": "^0.1.0"
+		"@oslojs/crypto": "0.2.0",
+		"@oslojs/encoding": "0.2.0"
 	}
 }
