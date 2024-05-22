@@ -1,6 +1,8 @@
 {
 	"include": ["src"],
 	"compilerOptions": {
+		"outDir": "dist",
+		"declaration": true,
 		"esModuleInterop": true,
 		"skipLibCheck": true,
 		"target": "es2022",
