@@ -35,9 +35,7 @@ export class AuthorizationCodeAuthorizationURL extends URL {
 
 	public setS256CodeChallenge(codeVerifier: string): void {
 		const codeChallengeBytes = sha256(new TextEncoder().encode(codeVerifier));
-		const codeChallenge = base64url.encode(codeChallengeBytes, {
-			includePadding: false
-		});
+		const codeChallenge = base64url.encodeNoPadding(codeChallengeBytes);
 		this.searchParams.set("code_challenge", codeChallenge);
 		this.searchParams.set("code_challenge_method", "S256");
 	}
@@ -67,15 +65,11 @@ export class AuthorizationCodeAccessTokenRequestContext extends OAuth2RequestCon
 export function generateCodeVerifier(): string {
 	const randomValues = new Uint8Array(32);
 	crypto.getRandomValues(randomValues);
-	return base64url.encode(randomValues, {
-		includePadding: false
-	});
+	return base64url.encodeNoPadding(randomValues);
 }
 
 export function generateState(): string {
 	const randomValues = new Uint8Array(32);
 	crypto.getRandomValues(randomValues);
-	return base64url.encode(randomValues, {
-		includePadding: false
-	});
+	return base64url.encodeNoPadding(randomValues);
 }
