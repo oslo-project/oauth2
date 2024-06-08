@@ -20,9 +20,9 @@ export class OAuth2RequestContext {
 	}
 
 	public authenticateWithHTTPBasicAuth(clientId: string, clientSecret: string): void {
-		const authorizationHeader = base64.encode(
+		const authorizationHeader = `Basic ${base64.encode(
 			new TextEncoder().encode(`${clientId}:${clientSecret}`)
-		);
+		)}`;
 		this.headers.set("Authorization", authorizationHeader);
 	}
 
