@@ -11,7 +11,7 @@ Represents an OAuth 2.0 request error as defined in [RFC 6749 §5.2](https://dat
 ## Constructor
 
 ```ts
-//$ OAuth2RequestContext=/reference/main/oauth2/OAuth2RequestContext
+//$ OAuth2RequestContext=/reference/main/OAuth2RequestContext
 function constructor(
 	message: string,
 	request: Request,
