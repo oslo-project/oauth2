@@ -11,9 +11,9 @@ Supports authorization code grant type, PKCE extension, refresh token grant type
 - Fully typed
 
 ```ts
-import { AuthorizationCodeAccessTokenRequestContext, TokenRequestResult } from "@oslojs/oauth2";
+import { AuthorizationCodeTokenRequestContext, TokenRequestResult } from "@oslojs/oauth2";
 
-const context = new AuthorizationCodeAccessTokenRequestContext(code);
+const context = new AuthorizationCodeTokenRequestContext(code);
 context.authenticateWithHTTPBasicAuth(clientId, clientSecret);
 context.setRedirectURI("https://my-app.com/login/callback");
 
@@ -26,7 +26,6 @@ const response = await fetch("https://github.com/login/oauth/access_token", {
 	body,
 	headers: new Headers(context.headers)
 });
-// GitHub returns 200 even for errors
 const data = await response.json();
 
 const result = new TokenRequestResult(data);
