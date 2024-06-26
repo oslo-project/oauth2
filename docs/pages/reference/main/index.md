@@ -14,16 +14,17 @@ title: "@oslojs/oauth2"
 
 ## Classes
 
-- [`AuthorizationCodeAccessTokenRequestContext`](/reference/main/AuthorizationCodeAccessTokenRequestContext)
 - [`AuthorizationCodeAuthorizationURL`](/reference/main/AuthorizationCodeAuthorizationURL)
-- [`DeviceAccessTokenRequestContext`](/reference/main/DeviceAccessTokenRequestContext)
+- [`AuthorizationCodeTokenRequestContext`](/reference/main/AuthorizationCodeTokenRequestContext)
 - [`DeviceAuthorizationRequestContext`](/reference/main/DeviceAuthorizationRequestContext)
+- [`DeviceAuthorizationRequestResult`](/reference/main/DeviceAuthorizationRequestResult)
+- [`DeviceAuthorizationTokenRequestContext`](/reference/main/DeviceAuthorizationTokenRequestContext)
 - [`OAuth2RequestContext`](/reference/main/OAuth2RequestContext)
-- [`OAuth2RequestError`](/reference/main/OAuth2RequestError)
+- [`OAuth2RequestResult`](/reference/main/OAuth2RequestResult)
 - [`RefreshRequestContext`](/reference/main/RefreshRequestContext)
+- [`TokenRequestResult`](/reference/main/TokenRequestResult)
 - [`TokenRevocationRequestContext`](/reference/main/TokenRevocationRequestContext)
 
-## Interfaces
+## Enums
 
-- [`DeviceAuthorizationResponseBody`](/reference/main/DeviceAuthorizationResponseBody)
-- [`TokenResponseBody`](/reference/main/DeviceAuthorizationResponseBody)
+- [`TokenType`](/reference/main/TokenType)

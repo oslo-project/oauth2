@@ -46,9 +46,9 @@ export class AuthorizationCodeAuthorizationURL extends URL {
 	}
 }
 
-export class AuthorizationCodeAccessTokenRequestContext extends OAuth2RequestContext {
+export class AuthorizationCodeTokenRequestContext extends OAuth2RequestContext {
 	constructor(authorizationCode: string) {
-		super();
+		super("POST");
 		this.body.set("grant_type", "authorization_code");
 		this.body.set("code", authorizationCode);
 	}

@@ -13,24 +13,29 @@ Represents a OAuth 2.0 POST request. On initialization:
 ## Constructor
 
 ```ts
-function constructor(): this;
+function constructor(method: string): this;
 ```
+
+### Parameters
+
+- `method`
 
 ## Methods
 
 - [`authenticateWithHTTPBasicAuth()`](/reference/main/OAuth2RequestContext/authenticateWithHTTPBasicAuth)
 - [`authenticateWithRequestBody()`](/reference/main/OAuth2RequestContext/authenticateWithRequestBody)
 - [`setClientId()`](/reference/main/OAuth2RequestContext/setClientId)
-- [`toFetchRequest()`](/reference/main/OAuth2RequestContext/toFetchRequest)
 
 ## Properties
 
 ```ts
 interface Properties {
-	body: URLSearchParams;
-	headers: Headers;
+	method: string;
+	body: Map<string, string>;
+	headers: Map<string, string>;
 }
 ```
 
+- `method`
 - `body`
 - `headers`
