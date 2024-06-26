@@ -2,7 +2,7 @@ import { OAuth2RequestContext } from "./request.js";
 
 export class RefreshRequestContext extends OAuth2RequestContext {
 	constructor(refreshToken: string) {
-		super();
+		super("POST");
 		this.body.set("grant_type", "refresh_token");
 		this.body.set("refresh_token", refreshToken);
 	}

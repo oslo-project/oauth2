@@ -11,13 +11,31 @@ Supports authorization code grant type, PKCE extension, refresh token grant type
 - Fully typed
 
 ```ts
-import { AuthorizationCodeAccessTokenRequestContext, sendTokenRequest } from "@oslojs/oauth2";
+import { AuthorizationCodeTokenRequestContext, TokenRequestResult } from "@oslojs/oauth2";
 
-const context = new AuthorizationCodeAccessTokenRequestContext(code);
+const context = new AuthorizationCodeTokenRequestContext(code);
 context.authenticateWithHTTPBasicAuth(clientId, clientSecret);
 context.setRedirectURI("https://my-app.com/login/callback");
-const tokens = await sendTokenRequest(tokenEndpoint, context);
-const accessToken = tokens.access_token;
+
+const body = new URLSearchParams();
+for (const [key, value] of context.body.entries()) {
+	body.set(key, value);
+}
+const response = await fetch("https://github.com/login/oauth/access_token", {
+	method: context.method,
+	body,
+	headers: new Headers(context.headers)
+});
+const data = await response.json();
+
+const result = new TokenRequestResult(data);
+if (result.hasErrorCode()) {
+	const error = result.errorCode();
+} else {
+	const accessToken = result.accessToken();
+	const accessTokenExpiresAt = result.accessTokenExpiresAt();
+	const refreshToken = result.refreshToken();
+}
 ```
 
 > Implicit grant type and resource owner password credentials grant type are not supported as they are no longer recommended.

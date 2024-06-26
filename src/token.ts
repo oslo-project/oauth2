@@ -1,36 +1,53 @@
-import { OAuth2RequestError } from "./request.js";
+import { OAuth2RequestResult } from "./request.js";
 
-import type { OAuth2RequestContext } from "./request.js";
-
-export interface TokenResponseBody {
-	access_token: string;
-	token_type: string;
-	expires_in?: number;
-	refresh_token?: string;
-	scope?: string;
-}
-
-export interface TokenErrorResponseBody {
-	error: string;
-	error_description?: string;
-}
-
-export async function sendTokenRequest<_TokenResponseBody extends TokenResponseBody>(
-	tokenEndpoint: string,
-	context: OAuth2RequestContext,
-	options?: {
-		signal?: AbortSignal;
+export class TokenRequestResult extends OAuth2RequestResult {
+	public tokenType(): string {
+		if ("token_type" in this.body && typeof this.body.token_type === "string") {
+			return this.body.token_type;
+		}
+		throw new Error("Missing or invalid 'token_type' field");
 	}
-): Promise<_TokenResponseBody> {
-	const request = context.toFetchRequest("POST", tokenEndpoint);
-	const response = await fetch(request, {
-		signal: options?.signal
-	});
-	const result: _TokenResponseBody | TokenErrorResponseBody = await response.json();
-	if ("access_token" in result) {
-		return result as _TokenResponseBody;
+
+	public accessToken(): string {
+		if ("access_token" in this.body && typeof this.body.access_token === "string") {
+			return this.body.access_token;
+		}
+		throw new Error("Missing or invalid 'access_token' field");
 	}
-	throw new OAuth2RequestError(result.error, request, context, response.headers, {
-		description: result.error_description
-	});
+
+	public accessTokenExpiresInSeconds(): number {
+		if ("expires_in" in this.body && typeof this.body.expires_in === "number") {
+			return this.body.expires_in;
+		}
+		throw new Error("Missing or invalid 'expires_in' field");
+	}
+
+	public accessTokenExpiresAt(): Date {
+		return new Date(Date.now() + this.accessTokenExpiresInSeconds() * 1000);
+	}
+
+	public hasRefreshToken(): boolean {
+		return "refresh_token" in this.body && typeof this.body.refresh_token === "string";
+	}
+
+	public refreshToken(): string {
+		if ("refresh_token" in this.body && typeof this.body.refresh_token === "string") {
+			return this.body.refresh_token;
+		}
+		throw new Error("Missing or invalid 'refresh_token' field");
+	}
+
+	public refreshTokenExpiresInSeconds(): number {
+		if (
+			"refresh_token_expires_in" in this.body &&
+			typeof this.body.refresh_token_expires_in === "number"
+		) {
+			return this.body.refresh_token_expires_in;
+		}
+		throw new Error("Missing or invalid 'refresh_token_expires_in' field");
+	}
+
+	public refreshTokenExpiresAt(): Date {
+		return new Date(Date.now() + this.refreshTokenExpiresInSeconds() * 1000);
+	}
 }

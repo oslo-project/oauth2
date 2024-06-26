@@ -1,8 +1,8 @@
 ---
-title: "AuthorizationCodeAccessTokenRequestContext.setCodeVerifier()"
+title: "AuthorizationCodeTokenRequestContext.setCodeVerifier()"
 ---
 
-# AuthorizationCodeAccessTokenRequestContext.setCodeVerifier()
+# AuthorizationCodeTokenRequestContext.setCodeVerifier()
 
 Sets the `code_verifier` parameter.
 

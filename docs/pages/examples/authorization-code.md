@@ -36,38 +36,45 @@ url.appendScopes("profile");
 
 ## Validation authorization code
 
-Create a new [`AuthorizationCodeAccessTokenRequestContext`](/reference/main/AuthorizationCodeAccessTokenRequestContext) and send an access token request with [`sendTokenRequest()`](/reference/main/sendTokenRequest).
+Create a new [`AuthorizationCodeTokenRequestContext`](/reference/main/AuthorizationCodeTokenRequestContext) and send a request to the token endpoint using the context's method, body (`application/x-www-form-urlencoded`), and headers.
 
-This throws an [`OAuth2RequestError`](/reference/main/OAuth2RequestError) when the endpoint returns a known OAuth 2.0 error response.
+Use [`TokenRequestResult`](/reference/main/TokenRequestResult) to parse the returned JSON response. Get the error code with `errorCode()` or the access token with `refreshToken()`. These methods throw an error if the field does not exist in the object or if the value is not of the expected type.
 
 ```ts
-import {
-	AuthorizationCodeAccessTokenRequestContext,
-	sendTokenRequest,
-	OAuth2RequestError
-} from "@oslojs/oauth2";
+import { AuthorizationCodeTokenRequestContext, TokenRequestResult } from "@oslojs/oauth2";
 
 const tokenEndpoint = "https://example.com/oauth2/token";
 
 // Validate state.
 
-const context = new AuthorizationCodeAccessTokenRequestContext(code);
+const context = new AuthorizationCodeTokenRequestContext(code);
 context.setRedirectURI("https://my-app.com/login/callback");
 context.authenticateWithHTTPBasicAuth(clientId, clientSecret);
 
-try {
-	const tokens = await sendTokenRequest(tokenEndpoint, context);
-	const accessToken = tokens.access_token;
-} catch (e) {
-	if (e instanceof OAuth2RequestError) {
-		// known error
-		const message = e.message;
-	}
-	// unknown error
+const body = new URLSearchParams();
+for (const [key, value] of context.body.entries()) {
+	body.set(key, value);
+}
+const response = await fetch(tokenEndpoint, {
+	method: context.method,
+	body,
+	headers: new Headers(context.headers)
+});
+const data = await response.json();
+
+const result = new TokenRequestResult(data);
+// Some providers like GitHub return 200 even for errors
+if (result.hasErrorCode()) {
+	const error = result.errorCode();
+} else {
+	const accessToken = result.accessToken();
+	const accessTokenExpiresAt = result.accessTokenExpiresAt();
+	const refreshToken = result.refreshToken();
+	const refreshTokenExpiresAt = result.refreshTokenExpiresAt();
 }
 ```
 
-Use `authenticateWithHTTPBasicAuth()` to send the client ID and password in the `Authorization` header. Alternatively, use `authenticateWithRequestBody()` to send the client ID and secret as the `client_id` and `client_secret` parameter. If the provider didn't provide a client credential, use `setClientId()` to just set the `client_id` parameter.
+`authenticateWithHTTPBasicAuth()` sets the client ID and password in the `Authorization` header, while `authenticateWithRequestBody()` sets client ID and secret as the `client_id` and `client_secret` parameter. If the provider didn't provide a client credential, use `setClientId()` to just set the `client_id` parameter.
 
 ```ts
 context.authenticateWithRequestBody(clientId, clientSecret);
@@ -75,16 +82,13 @@ context.authenticateWithRequestBody(clientId, clientSecret);
 context.setClientId(clientId);
 ```
 
-You can overwrite the response type by providing a type as an argument.
+If your provider only returns the refresh token sometimes, use `hasRefreshToken()` to check if the refresh token exists.
 
 ```ts
-import type { TokenResponseBody } from "@oslojs/oauth2";
-
-const tokens = await sendTokenRequest<ResponseBody>(context);
-const accessToken = tokens.access_token;
-const refreshToken = tokens.refresh_token;
-
-interface ResponseBody extends TokenResponseBody {
-	refresh_token: string;
+const accessToken = result.accessToken();
+const accessTokenExpiresAt = result.accessTokenExpiresAt();
+if (result.hasRefreshToken()) {
+	const refreshToken = result.refreshToken();
+	const refreshTokenExpiresAt = result.refreshTokenExpiresAt();
 }
 ```

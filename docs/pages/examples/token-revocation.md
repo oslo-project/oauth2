@@ -4,33 +4,38 @@ title: "Token revocation"
 
 # Token revocation
 
-This is defined is [RFC 7009](https://datatracker.ietf.org/doc/html/rfc7009).
+Token revocation is defined is [RFC 7009](https://datatracker.ietf.org/doc/html/rfc7009).
 
-Create a new [`TokenRevocationRequestContext`](/reference/main/TokenRevocationRequestContext) and send a revocation request to the token endpoint with [`sendTokenRevocationRequest()`](/reference/main/sendTokenRevocationRequest). This throws an [`OAuth2RequestError`](/reference/main/OAuth2RequestError) when the endpoint returns a known OAuth 2.0 error response.
+Create a new [`TokenRevocationRequestContext`](/reference/main/TokenRevocationRequestContext) and send a request to the token endpoint using the context's method, body (`application/x-www-form-urlencoded`), and headers.
+
+Use [`OAuth2RequestResult`](/reference/main/OAuth2RequestResult) to parse the returned JSON and get the error code with `errorCode()`. This throws an error if the field does not exist in the object or if the value is not of the expected type.
 
 ```ts
-import {
-	TokenRevocationRequestContext,
-	sendTokenRevocationRequest,
-	OAuth2RequestError
-} from "@oslojs/oauth2";
+import { TokenRevocationRequestContext, TokenType, OAuth2RequestResult } from "@oslojs/oauth2";
 
 const context = new TokenRevocationRequestContext(accessToken);
-context.authenticateWithHTTPBasicAuth(clientId, clientPassword);
-context.setTokenTypeHint("access_token"); // set `token_type_hint`
 
-try {
-	await sendTokenRevocationRequest(tokenRevocationEndpoint, context);
-} catch (e) {
-	if (e instanceof OAuth2RequestError) {
-		// known error
-		const message = e.message;
-	}
-	// unknown error
+context.authenticateWithHTTPBasicAuth(clientId, clientSecret);
+context.setTokenTypeHint(TokenType.AccessToken);
+
+const body = new URLSearchParams();
+for (const [key, value] of context.body.entries()) {
+	body.set(key, value);
+}
+const response = await fetch(tokenEndpoint, {
+	method: context.method,
+	body,
+	headers: new Headers(context.headers)
+});
+
+if (!response.ok) {
+	const data = await response.json();
+	const result = new OAuth2RequestResult(data);
+	const error = result.errorCode();
 }
 ```
 
-Use `authenticateWithHTTPBasicAuth()` to send the client ID and password in the `Authorization` header. Alternatively, use `authenticateWithRequestBody()` to send the client ID and secret as the `client_id` and `client_secret` parameter. If the provider didn't provide a client credential, use `setClientId()` to just set the `client_id` parameter.
+`authenticateWithHTTPBasicAuth()` sets the client ID and password in the `Authorization` header, while `authenticateWithRequestBody()` sets client ID and secret as the `client_id` and `client_secret` parameter. If the provider didn't provide a client credential, use `setClientId()` to just set the `client_id` parameter.
 
 ```ts
 context.authenticateWithRequestBody(clientId, clientSecret);
@@ -38,9 +43,10 @@ context.authenticateWithRequestBody(clientId, clientSecret);
 context.setClientId(clientId);
 ```
 
-This also supports refresh token revocation.
+You can also set the `token_type_hint` parameter to `refresh_token` by passing `TokenType.RefreshToken`.
 
 ```ts
-const context = new TokenRevocationRequestContext(refreshToken);
-context.setTokenTypeHint("refresh_token");
+import { TokenType } from "@oslojs/oauth2";
+
+context.setTokenTypeHint(TokenType.RefreshToken);
 ```

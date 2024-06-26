@@ -1,5 +1,10 @@
 # @oslojs/oauth2
 
+## 0.2.0
+
+- [Breaking] Remove APIs for sending requests
+- Add `RequestResult`s
+
 ## 0.1.2
 
 - Update dependencies.

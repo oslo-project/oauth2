@@ -1,10 +1,12 @@
 import { base64 } from "@oslojs/encoding";
 
 export class OAuth2RequestContext {
-	public body = new URLSearchParams();
-	public headers = new Headers();
+	public method: string;
+	public body = new Map<string, string>();
+	public headers = new Map<string, string>();
 
-	constructor() {
+	constructor(method: string) {
+		this.method = method;
 		this.headers.set("Content-Type", "application/x-www-form-urlencoded");
 		this.headers.set("Accept", "application/json");
 		this.headers.set("User-Agent", "oslo");
@@ -25,35 +27,52 @@ export class OAuth2RequestContext {
 		)}`;
 		this.headers.set("Authorization", authorizationHeader);
 	}
-
-	public toFetchRequest(method: string, url: string): Request {
-		return new Request(url, {
-			method,
-			body: this.body,
-			headers: this.headers
-		});
-	}
 }
 
-export class OAuth2RequestError extends Error {
-	public request: Request;
-	public context: OAuth2RequestContext;
-	public description: string | null;
-	public responseHeaders: Headers;
+export class OAuth2RequestResult {
+	public body: object;
 
-	constructor(
-		message: string,
-		request: Request,
-		context: OAuth2RequestContext,
-		responseHeaders: Headers,
-		options?: {
-			description?: string;
+	constructor(body: object) {
+		this.body = body;
+	}
+
+	public hasErrorCode(): boolean {
+		return "error" in this.body && typeof this.body.error === "string";
+	}
+
+	public errorCode(): string {
+		if ("error" in this.body && typeof this.body.error === "string") {
+			return this.body.error;
 		}
-	) {
-		super(message);
-		this.request = request;
-		this.context = context;
-		this.responseHeaders = responseHeaders;
-		this.description = options?.description ?? null;
+		throw new Error("Missing or invalid 'error' field");
+	}
+
+	public hasErrorDescription(): boolean {
+		return "error_description" in this.body && typeof this.body.error_description === "string";
+	}
+
+	public errorDescription(): string {
+		if ("error_description" in this.body && typeof this.body.error_description === "string") {
+			return this.body.error_description;
+		}
+		throw new Error("Missing or invalid 'error_description' field");
+	}
+
+	public hasErrorURI(): boolean {
+		return "error_uri" in this.body && typeof this.body.error_uri === "string";
+	}
+
+	public errorURI(): string {
+		if ("error_uri" in this.body && typeof this.body.error_uri === "string") {
+			return this.body.error_uri;
+		}
+		throw new Error("Missing or invalid 'error_uri' field");
+	}
+
+	public state(): string {
+		if ("state" in this.body && typeof this.body.state === "string") {
+			return this.body.state;
+		}
+		throw new Error("Missing or invalid 'state' field");
 	}
 }

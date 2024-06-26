@@ -1,10 +1,8 @@
-import { OAuth2RequestContext, OAuth2RequestError } from "./request.js";
-
-import type { TokenErrorResponseBody } from "./token.js";
+import { OAuth2RequestContext, OAuth2RequestResult } from "./request.js";
 
 export class DeviceAuthorizationRequestContext extends OAuth2RequestContext {
 	constructor() {
-		super();
+		super("POST");
 	}
 
 	public setScopes(...scopes: string[]): void {
@@ -24,41 +22,54 @@ export class DeviceAuthorizationRequestContext extends OAuth2RequestContext {
 	}
 }
 
-export class DeviceAccessTokenRequest extends OAuth2RequestContext {
+export class DeviceAuthorizationTokenRequestContext extends OAuth2RequestContext {
 	constructor(deviceCode: string) {
-		super();
+		super("POST");
 		this.body.set("grant_type", "urn:ietf:params:oauth:grant-type:device_code");
 		this.body.set("device_code", deviceCode);
 	}
 }
 
-export async function sendDeviceAuthorizationRequest<
-	_ResponseBody extends DeviceAuthorizationResponseBody
->(
-	deviceAuthorizationEndpoint: string,
-	context: DeviceAuthorizationRequestContext,
-	options?: {
-		signal?: AbortSignal;
+export class DeviceAuthorizationRequestResult extends OAuth2RequestResult {
+	public deviceCode(): string {
+		if ("device_code" in this.body && typeof this.body.device_code === "string") {
+			return this.body.device_code;
+		}
+		throw new Error("Missing or invalid 'device_code' field");
 	}
-): Promise<_ResponseBody> {
-	const request = context.toFetchRequest("POST", deviceAuthorizationEndpoint);
-	const response = await fetch(request, {
-		signal: options?.signal
-	});
-	const result: _ResponseBody | TokenErrorResponseBody = await response.json();
-	if ("device_code" in result) {
-		return result as _ResponseBody;
-	}
-	throw new OAuth2RequestError(result.error, request, context, response.headers, {
-		description: result.error_description
-	});
-}
 
-export interface DeviceAuthorizationResponseBody {
-	device_code: string;
-	user_code: string;
-	verification_uri: string;
-	expires_in: number;
-	interval?: number;
-	verification_uri_complete?: string;
+	public userCode(): string {
+		if ("user_code" in this.body && typeof this.body.user_code === "string") {
+			return this.body.user_code;
+		}
+		throw new Error("Missing or invalid 'user_code' field");
+	}
+
+	public verificationURI(): string {
+		if ("verification_uri" in this.body && typeof this.body.verification_uri === "string") {
+			return this.body.verification_uri;
+		}
+		throw new Error("Missing or invalid 'verification_uri' field");
+	}
+
+	public codesExpireInSeconds(): number {
+		if ("expires_in" in this.body && typeof this.body.expires_in === "number") {
+			return this.body.expires_in;
+		}
+		throw new Error("Missing or invalid 'expires_in' field");
+	}
+
+	public codesExpireAt(): Date {
+		return new Date(Date.now() + this.codesExpireInSeconds() * 1000);
+	}
+
+	public intervalSeconds(): number {
+		if ("interval" in this.body) {
+			if (typeof this.body.interval === "number") {
+				return this.body.interval;
+			}
+			throw new Error("Invalid 'interval' field");
+		}
+		return 5;
+	}
 }

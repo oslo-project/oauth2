@@ -25,7 +25,7 @@ function constructor(): this;
 - [`OAuth2RequestContext.authenticateWithHTTPBasicAuth()`](/reference/main/OAuth2RequestContext/authenticateWithHTTPBasicAuth)
 - [`OAuth2RequestContext.authenticateWithRequestBody()`](/reference/main/OAuth2RequestContext/authenticateWithRequestBody)
 - [`OAuth2RequestContext.setClientId()`](/reference/main/OAuth2RequestContext/setClientId)
-- [`OAuth2RequestContext.toFetchRequest()`](/reference/main/OAuth2RequestContext/toFetchRequest)
+
 - [`appendScopes()`](/reference/main/DeviceAuthorizationRequestContext/appendScopes)
 - [`setScopes()`](/reference/main/DeviceAuthorizationRequestContext/setScopes)
 
@@ -33,10 +33,12 @@ function constructor(): this;
 
 ```ts
 interface Properties {
-	body: URLSearchParams;
-	headers: Headers;
+	method: string;
+	body: Map<string, string>;
+	headers: Map<string, string>;
 }
 ```
 
+- `OAuth2RequestContext.method`
 - `OAuth2RequestContext.body`
 - `OAuth2RequestContext.headers`
