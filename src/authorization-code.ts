@@ -3,8 +3,8 @@ import { OAuth2RequestContext } from "./request.js";
 import { sha256 } from "@oslojs/crypto/sha2";
 
 export class AuthorizationCodeAuthorizationURL extends URL {
-	constructor(authorizeEndpoint: string, clientId: string) {
-		super(authorizeEndpoint);
+	constructor(authorizationEndpoint: string, clientId: string) {
+		super(authorizationEndpoint);
 		this.searchParams.set("response_type", "code");
 		this.searchParams.set("client_id", clientId);
 	}
