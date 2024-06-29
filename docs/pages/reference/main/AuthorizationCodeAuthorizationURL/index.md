@@ -23,11 +23,10 @@ function constructor(authorizationEndpoint: string, clientId: string): this;
 
 See also [`URL` methods](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams#instance_methods).
 
-- [`appendScopes()`](/reference/main/AuthorizationCodeAuthorizationURL/appendScopes)
+- [`addScopes()`](/reference/main/AuthorizationCodeAuthorizationURL/addScopes)
 - [`setPlainCodeChallenge()`](/reference/main/AuthorizationCodeAuthorizationURL/setPlainCodeChallenge)
 - [`setRedirectURI()`](/reference/main/AuthorizationCodeAuthorizationURL/setRedirectURI)
 - [`setS256CodeChallenge()`](/reference/main/AuthorizationCodeAuthorizationURL/setS256CodeChallenge)
-- [`setScopes()`](/reference/main/AuthorizationCodeAuthorizationURL/setScopes)
 - [`setState()`](/reference/main/AuthorizationCodeAuthorizationURL/setState)
 
 ## Properties

@@ -1,5 +1,9 @@
 # @oslojs/oauth2
 
+## 0.3.0
+
+- [Breaking] Remove `setScopes()` and rename `appendScopes()` to `addScopes()`
+
 ## 0.2.0
 
 - [Breaking] Remove APIs for sending requests

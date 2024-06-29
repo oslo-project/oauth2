@@ -13,11 +13,7 @@ export class AuthorizationCodeAuthorizationURL extends URL {
 		this.searchParams.set("redirect_uri", redirectURI);
 	}
 
-	public setScopes(...scopes: string[]): void {
-		this.searchParams.set("scope", scopes.join(" "));
-	}
-
-	public appendScopes(...scopes: string[]): void {
+	public addScopes(...scopes: string[]): void {
 		if (scopes.length < 1) {
 			return;
 		}

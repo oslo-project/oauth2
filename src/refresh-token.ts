@@ -7,11 +7,7 @@ export class RefreshRequestContext extends OAuth2RequestContext {
 		this.body.set("refresh_token", refreshToken);
 	}
 
-	public setScopes(...scopes: string[]): void {
-		this.body.set("scope", scopes.join(" "));
-	}
-
-	public appendScopes(...scopes: string[]): void {
+	public addScopes(...scopes: string[]): void {
 		if (scopes.length < 1) {
 			return;
 		}

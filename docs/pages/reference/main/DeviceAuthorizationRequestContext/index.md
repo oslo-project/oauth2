@@ -26,8 +26,7 @@ function constructor(): this;
 - [`OAuth2RequestContext.authenticateWithRequestBody()`](/reference/main/OAuth2RequestContext/authenticateWithRequestBody)
 - [`OAuth2RequestContext.setClientId()`](/reference/main/OAuth2RequestContext/setClientId)
 
-- [`appendScopes()`](/reference/main/DeviceAuthorizationRequestContext/appendScopes)
-- [`setScopes()`](/reference/main/DeviceAuthorizationRequestContext/setScopes)
+- [`addScopes()`](/reference/main/DeviceAuthorizationRequestContext/addScopes)
 
 ## Properties
 

@@ -5,11 +5,7 @@ export class DeviceAuthorizationRequestContext extends OAuth2RequestContext {
 		super("POST");
 	}
 
-	public setScopes(...scopes: string[]): void {
-		this.body.set("scope", scopes.join(" "));
-	}
-
-	public appendScopes(...scopes: string[]): void {
+	public addScopes(...scopes: string[]): void {
 		if (scopes.length < 1) {
 			return;
 		}

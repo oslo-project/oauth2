@@ -1,7 +1,7 @@
 {
 	"name": "@oslojs/oauth2",
 	"type": "module",
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"description": "A runtime-agnostic OAuth 2.0 library",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",

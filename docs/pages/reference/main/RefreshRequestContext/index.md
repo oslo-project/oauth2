@@ -32,8 +32,7 @@ function constructor(refreshToken: string): this;
 - [`OAuth2RequestContext.authenticateWithRequestBody()`](/reference/main/OAuth2RequestContext/authenticateWithRequestBody)
 - [`OAuth2RequestContext.setClientId()`](/reference/main/OAuth2RequestContext/setClientId)
 
-- [`appendScopes()`](/reference/main/RefreshRequestContext/appendScopes)
-- [`setScopes()`](/reference/main/RefreshRequestContext/setScopes)
+- [`addScopes()`](/reference/main/RefreshRequestContext/addScopes)
 
 ## Properties
 

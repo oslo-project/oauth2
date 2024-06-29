@@ -20,18 +20,11 @@ const state = generateState();
 const url = new AuthorizationCodeAuthorizationURL(authorizationEndpoint, clientId);
 url.setRedirectURI("https://my-app.com/login/callback");
 url.setState(state);
-url.setScopes("user", "profile");
+url.addScopes("user", "profile");
 
 const redirectLocation = url.toString();
 
 // Store state as cookie or in session.
-```
-
-Use `appendScopes()` to append new scopes to existing ones.
-
-```ts
-url.appendScopes("user");
-url.appendScopes("profile");
 ```
 
 ## Validation authorization code
