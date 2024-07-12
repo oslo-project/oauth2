@@ -28,12 +28,12 @@ function constructor(body: object): this;
 - [`OAuth2RequestResult.hasErrorURI()`](/reference/main/OAuth2RequestResult/hasErrorURI)
 - [`OAuth2RequestResult.state()`](/reference/main/OAuth2RequestResult/state)
 
-- [`codesExpireAt()`](/reference/main/DeviceAuthorizationRequestResult/codesExpireAt)
-- [`codesExpireIn()`](/reference/main/DeviceAuthorizationRequestResult/codesExpireIn)
-- [`deviceCode()`](/reference/main/DeviceAuthorizationRequestResult/deviceCode)
-- [`intervalSeconds()`](/reference/main/DeviceAuthorizationRequestResult/intervalSeconds)
-- [`userCode()`](/reference/main/DeviceAuthorizationRequestResult/userCode)
-- [`verificationURI()`](/reference/main/DeviceAuthorizationRequestResult/verificationURI)
+- [`DeviceAuthorizationRequestResult.codesExpireAt()`](/reference/main/DeviceAuthorizationRequestResult/codesExpireAt)
+- [`DeviceAuthorizationRequestResult.codesExpireIn()`](/reference/main/DeviceAuthorizationRequestResult/codesExpireIn)
+- [`DeviceAuthorizationRequestResult.deviceCode()`](/reference/main/DeviceAuthorizationRequestResult/deviceCode)
+- [`DeviceAuthorizationRequestResult.intervalSeconds()`](/reference/main/DeviceAuthorizationRequestResult/intervalSeconds)
+- [`DeviceAuthorizationRequestResult.userCode()`](/reference/main/DeviceAuthorizationRequestResult/userCode)
+- [`DeviceAuthorizationRequestResult.verificationURI()`](/reference/main/DeviceAuthorizationRequestResult/verificationURI)
 
 ## Properties
 

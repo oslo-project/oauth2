@@ -7,13 +7,7 @@
 	"sidebar": [
 		{
 			"title": "Examples",
-			"pages": [
-				["Authorization code grant type", "/examples/authorization-code"],
-				["PKCE", "/examples/pkce"],
-				["Refresh tokens", "/examples/refresh-token"],
-				["Token revocation", "/examples/token-revocation"],
-				["Device authorization grant type", "/examples/device-authorization"]
-			]
+			"pages": [["Parsing responses", "/examples/parse"]]
 		},
 		{
 			"title": "API reference",

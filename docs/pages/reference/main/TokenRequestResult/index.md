@@ -16,7 +16,7 @@ function constructor(body: object): this;
 
 ### Parameters
 
-- `body`: JSON-parsed object.
+- `body`: `JSON.parsed()`-ed object.
 
 ## Methods
 
@@ -28,14 +28,14 @@ function constructor(body: object): this;
 - [`OAuth2RequestResult.hasErrorURI()`](/reference/main/OAuth2RequestResult/hasErrorURI)
 - [`OAuth2RequestResult.state()`](/reference/main/OAuth2RequestResult/state)
 
-- [`accessToken()`](/reference/main/TokenRequestResult/accessToken)
-- [`accessTokenExpiresAt()`](/reference/main/TokenRequestResult/accessTokenExpiresAt)
-- [`accessTokenExpiresInSeconds()`](/reference/main/TokenRequestResult/accessTokenExpiresInSeconds)
-- [`hasRefreshToken()`](/reference/main/TokenRequestResult/hasRefreshToken)
-- [`refreshToken()`](/reference/main/TokenRequestResult/refreshToken)
-- [`refreshTokenExpiresAt()`](/reference/main/TokenRequestResult/refreshTokenExpiresAt)
-- [`refreshTokenExpiresInSeconds()`](/reference/main/TokenRequestResult/refreshTokenExpiresInSeconds)
-- [`tokenType()`](/reference/main/TokenRequestResult/tokenType)
+- [`TokenRequestResult.accessToken()`](/reference/main/TokenRequestResult/accessToken)
+- [`TokenRequestResult.accessTokenExpiresAt()`](/reference/main/TokenRequestResult/accessTokenExpiresAt)
+- [`TokenRequestResult.accessTokenExpiresInSeconds()`](/reference/main/TokenRequestResult/accessTokenExpiresInSeconds)
+- [`TokenRequestResult.hasRefreshToken()`](/reference/main/TokenRequestResult/hasRefreshToken)
+- [`TokenRequestResult.hasScopes()`](/reference/main/TokenRequestResult/hasScopes)
+- [`TokenRequestResult.refreshToken()`](/reference/main/TokenRequestResult/refreshToken)
+- [`TokenRequestResult.scopes()`](/reference/main/TokenRequestResult/scopes)
+- [`TokenRequestResult.tokenType()`](/reference/main/TokenRequestResult/tokenType)
 
 ## Properties
 

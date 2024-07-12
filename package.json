@@ -1,7 +1,7 @@
 {
 	"name": "@oslojs/oauth2",
 	"type": "module",
-	"version": "0.3.0",
+	"version": "0.4.0",
 	"description": "A runtime-agnostic OAuth 2.0 library",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -33,9 +33,5 @@
 		"eslint": "^8.51.0",
 		"prettier": "^3.0.3",
 		"typescript": "^5.2.2"
-	},
-	"dependencies": {
-		"@oslojs/crypto": "0.2.0",
-		"@oslojs/encoding": "0.3.0"
 	}
 }
