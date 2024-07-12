@@ -38,6 +38,10 @@ export class OAuthRequestErrorResult {
 		throw new Error("Missing or invalid 'error_uri' field");
 	}
 
+	public hasState(): boolean {
+		return "state" in this.body && typeof this.body.state === "string";
+	}
+
 	public state(): string {
 		if ("state" in this.body && typeof this.body.state === "string") {
 			return this.body.state;
