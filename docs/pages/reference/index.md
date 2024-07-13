@@ -6,4 +6,4 @@ title: "API reference"
 
 ## Modules
 
-- [`main`](/reference/main)
+- [`@oslojs/oauth2`](/reference/main)

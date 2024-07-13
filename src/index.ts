@@ -1,4 +1,4 @@
-export class OAuthRequestErrorResult {
+export class OAuth2RequestResult{
 	public body: object;
 
 	constructor(body: object) {
@@ -50,7 +50,7 @@ export class OAuthRequestErrorResult {
 	}
 }
 
-export class TokenRequestResult extends OAuthRequestErrorResult {
+export class TokenRequestResult extends OAuth2RequestResult {
 	public tokenType(): string {
 		if ("token_type" in this.body && typeof this.body.token_type === "string") {
 			return this.body.token_type;
@@ -99,7 +99,7 @@ export class TokenRequestResult extends OAuthRequestErrorResult {
 	}
 }
 
-export class DeviceAuthorizationRequestResult extends OAuthRequestErrorResult {
+export class DeviceAuthorizationRequestResult extends OAuth2RequestResult {
 	public deviceCode(): string {
 		if ("device_code" in this.body && typeof this.body.device_code === "string") {
 			return this.body.device_code;
