@@ -24,6 +24,7 @@ function constructor(body: object): this;
 - [`hasErrorCode()`](/reference/main/OAuth2RequestResult/hasErrorCode)
 - [`hasErrorDescription()`](/reference/main/OAuth2RequestResult/hasErrorDescription)
 - [`hasErrorURI()`](/reference/main/OAuth2RequestResult/hasErrorURI)
+- [`hasState()`](/reference/main/OAuth2RequestResult/hasErrorURI)
 - [`state()`](/reference/main/OAuth2RequestResult/state)
 
 ## Properties
