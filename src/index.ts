@@ -1,4 +1,4 @@
-export class OAuth2RequestResult{
+export class OAuth2RequestResult {
 	public body: object;
 
 	constructor(body: object) {
