@@ -27,7 +27,6 @@ function constructor(body: object): this;
 - [`OAuth2RequestResult.hasErrorDescription()`](/reference/main/OAuth2RequestResult/hasErrorDescription)
 - [`OAuth2RequestResult.hasErrorURI()`](/reference/main/OAuth2RequestResult/hasErrorURI)
 - [`OAuth2RequestResult.state()`](/reference/main/OAuth2RequestResult/state)
-
 - [`DeviceAuthorizationRequestResult.codesExpireAt()`](/reference/main/DeviceAuthorizationRequestResult/codesExpireAt)
 - [`DeviceAuthorizationRequestResult.codesExpireIn()`](/reference/main/DeviceAuthorizationRequestResult/codesExpireIn)
 - [`DeviceAuthorizationRequestResult.deviceCode()`](/reference/main/DeviceAuthorizationRequestResult/deviceCode)
